@@ -1,0 +1,51 @@
+package com.buthdev.demo.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.buthdev.demo.dto.UserDTO;
+import com.buthdev.demo.exceptions.UserNotFoundException;
+import com.buthdev.demo.model.User;
+import com.buthdev.demo.repositories.UserRepository;
+
+@Service
+public class UserService {
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	public List<User> findAll(){
+		return userRepository.findAll();
+	}
+	
+	public User findById(Long id) {
+		return userRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
+	}
+	
+	public User createUser(UserDTO userDto) {
+		User user = new User();
+		convertToUser(userDto, user);
+		
+		return userRepository.save(user);
+	}
+
+	public User updateUser(UserDTO userDto, Long id) {
+		User user = findById(id);
+		convertToUser(userDto, user);
+		return userRepository.save(user);
+	}
+	
+	public void deleteUser(Long id) {
+		findById(id);
+		userRepository.deleteById(id);
+	}
+	
+	
+	private User convertToUser(UserDTO userDto, User user) {
+		user.setName(userDto.getName());
+		user.setPhone(userDto.getPhone());
+		return user;
+	}
+}
