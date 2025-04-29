@@ -14,37 +14,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buthdev.demo.dto.UserDTO;
-import com.buthdev.demo.model.User;
-import com.buthdev.demo.services.UserService;
+import com.buthdev.demo.dto.BookDTO;
+import com.buthdev.demo.model.Book;
+import com.buthdev.demo.services.BookService;
 
 @RestController
-@RequestMapping(value = "users")
-public class UserController {
+@RequestMapping(value = "books")
+public class BookController {
 
 	@Autowired
-	UserService userService;
+	BookService bookService;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		return ResponseEntity.ok().body(userService.findAll());
+	public ResponseEntity<List<Book>> findAll() {
+		return ResponseEntity.ok().body(bookService.findAll());
+	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Book> findById(@PathVariable Long id) {
+		return ResponseEntity.ok().body(bookService.findById(id));
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody UserDTO userDto) {
-		userService.createUser(userDto);
+	public ResponseEntity<Book> createbook(@RequestBody BookDTO bookDto) {
+		bookService.createBook(bookDto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<User> updateUser (@RequestBody UserDTO userDto, @PathVariable Long id) {
-		userService.updateUser(userDto, id);
+	public ResponseEntity<Book> updatebook (@RequestBody BookDTO bookDto, @PathVariable Long id) {
+		bookService.updateBook(bookDto, id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-		userService.deleteUser(id);
+	public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
+		bookService.deleteBook(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 }

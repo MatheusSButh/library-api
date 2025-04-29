@@ -1,5 +1,6 @@
 package com.buthdev.demo.model;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 import jakarta.persistence.Entity;
@@ -18,7 +19,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor	
-public class Borrowed {
+public class Borrowed implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

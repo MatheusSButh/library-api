@@ -1,9 +1,13 @@
 package com.buthdev.demo.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +20,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +29,7 @@ public class User {
 	
 	private String name;
 	private String phone;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Borrowed> borrowedBooks;
 }

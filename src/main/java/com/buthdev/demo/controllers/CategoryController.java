@@ -14,37 +14,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buthdev.demo.dto.UserDTO;
-import com.buthdev.demo.model.User;
-import com.buthdev.demo.services.UserService;
+import com.buthdev.demo.dto.CategoryDTO;
+import com.buthdev.demo.model.Category;
+import com.buthdev.demo.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "users")
-public class UserController {
+@RequestMapping(value = "categories")
+public class CategoryController {
 
 	@Autowired
-	UserService userService;
+	CategoryService categoryService;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		return ResponseEntity.ok().body(userService.findAll());
+	public ResponseEntity<List<Category>> findAll() {
+		return ResponseEntity.ok().body(categoryService.findAll());
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody UserDTO userDto) {
-		userService.createUser(userDto);
+	public ResponseEntity<Category> createcategory(@RequestBody CategoryDTO categoryDto) {
+		categoryService.createCategory(categoryDto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<User> updateUser (@RequestBody UserDTO userDto, @PathVariable Long id) {
-		userService.updateUser(userDto, id);
+	public ResponseEntity<Category> updatecategory (@RequestBody CategoryDTO categoryDto, @PathVariable Long id) {
+		categoryService.updateCategory(categoryDto, id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-		userService.deleteUser(id);
+	public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
+		categoryService.deleteCategory(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 }

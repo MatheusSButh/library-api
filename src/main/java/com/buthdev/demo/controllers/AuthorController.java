@@ -14,37 +14,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buthdev.demo.dto.UserDTO;
-import com.buthdev.demo.model.User;
-import com.buthdev.demo.services.UserService;
+import com.buthdev.demo.dto.AuthorDTO;
+import com.buthdev.demo.model.Author;
+import com.buthdev.demo.services.AuthorService;
 
 @RestController
-@RequestMapping(value = "users")
-public class UserController {
+@RequestMapping(value = "authors")
+public class AuthorController {
 
 	@Autowired
-	UserService userService;
+	AuthorService authorService;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		return ResponseEntity.ok().body(userService.findAll());
+	public ResponseEntity<List<Author>> findAll() {
+		return ResponseEntity.ok().body(authorService.findAll());
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody UserDTO userDto) {
-		userService.createUser(userDto);
+	public ResponseEntity<Author> createauthor(@RequestBody AuthorDTO authorDto) {
+		authorService.createAuthor(authorDto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<User> updateUser (@RequestBody UserDTO userDto, @PathVariable Long id) {
-		userService.updateUser(userDto, id);
+	public ResponseEntity<Author> updateauthor (@RequestBody AuthorDTO authorDto, @PathVariable Long id) {
+		authorService.updateAuthor(authorDto, id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-		userService.deleteUser(id);
+	public ResponseEntity<Void> deleteAuthor(@PathVariable Long id) {
+		authorService.deleteAuthor(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 }
