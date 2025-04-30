@@ -16,7 +16,7 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	public List<Category> findAll(){
+	public List<Category> findAll() {
 		return categoryRepository.findAll();
 	}
 	
@@ -40,6 +40,10 @@ public class CategoryService {
 	public void deleteCategory(Long id) {
 		findById(id);
 		categoryRepository.deleteById(id);
+	}
+	
+	public List<Category> findAllById(Iterable<Long> id) {
+		return categoryRepository.findAllById(id);
 	}
 	
 	

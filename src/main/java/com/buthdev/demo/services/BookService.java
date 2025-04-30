@@ -10,7 +10,6 @@ import com.buthdev.demo.dto.BookDTO;
 import com.buthdev.demo.exceptions.UserNotFoundException;
 import com.buthdev.demo.model.Book;
 import com.buthdev.demo.repositories.BookRepository;
-import com.buthdev.demo.repositories.CategoryRepository;
 
 @Service
 public class BookService {
@@ -22,7 +21,7 @@ public class BookService {
 	private AuthorService authorService;
 	
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private CategoryService categoryService;
 	
 	public List<Book> findAll(){
 		return bookRepository.findAll();
@@ -58,7 +57,7 @@ public class BookService {
 		
 		book.setName(bookDto.getName());
 		book.setAuthor(authorService.findById(bookDto.getAuthorId()));
-		book.setCategories(new HashSet<>(categoryRepository.findAllById(bookDto.getCategoryId())));
+		book.setCategories(new HashSet<>(categoryService.findAllById(bookDto.getCategoryId())));
 		return book;
 	}
 }

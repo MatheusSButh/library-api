@@ -1,7 +1,10 @@
 package com.buthdev.demo.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,4 +46,8 @@ public class Book implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private Author author;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "book")
+	private List<Borrowed> borrowedBooks;
 }
