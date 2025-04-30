@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.buthdev.demo.dto.BorrowedDTO;
 import com.buthdev.demo.exceptions.UserNotFoundException;
 import com.buthdev.demo.model.Borrowed;
+import com.buthdev.demo.model.enums.BorrowedStatus;
 import com.buthdev.demo.repositories.BorrowedRepository;
 
 @Service
@@ -36,6 +37,7 @@ public class BorrowedService {
 		convertToBorrowed(borrowedDto, borrowed);
 		
 		borrowed.setInitialDate(OffsetDateTime.now());
+		borrowed.setStatus(BorrowedStatus.VALID);
 		borrowed.setDevolutionDate(borrowed.getInitialDate().plusDays(3));
 		
 		return borrowedRepository.save(borrowed);
@@ -52,6 +54,17 @@ public class BorrowedService {
 		borrowedRepository.deleteById(id);
 	}
 	
+	public List<Borrowed> findByExpiredDate() {
+		  OffsetDateTime currentDate = OffsetDateTime.now();
+		    List<Borrowed> expiredItems = borrowedRepository.findByDevolutionDateBefore(currentDate);
+
+		    for (Borrowed borrowed : expiredItems) {
+		        borrowed.setStatus(BorrowedStatus.EXPIRED);
+		        borrowedRepository.save(borrowed);
+		    }
+		    
+		    return expiredItems;
+		}
 	
 	private Borrowed convertToBorrowed(BorrowedDTO borrowedDto, Borrowed borrowed) {
 		borrowed.setUser(userService.findById(borrowedDto.getUserId()));

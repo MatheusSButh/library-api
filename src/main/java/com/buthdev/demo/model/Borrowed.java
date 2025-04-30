@@ -3,6 +3,8 @@ package com.buthdev.demo.model;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
+import com.buthdev.demo.model.enums.BorrowedStatus;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,4 +38,6 @@ public class Borrowed implements Serializable {
 	
 	private OffsetDateTime initialDate;
 	private OffsetDateTime devolutionDate;
+	
+	private BorrowedStatus status;
 }
