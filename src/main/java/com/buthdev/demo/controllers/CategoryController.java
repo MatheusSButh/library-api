@@ -31,13 +31,13 @@ public class CategoryController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Category> createcategory(@RequestBody CategoryDTO categoryDto) {
+	public ResponseEntity<Category> createCategory(@RequestBody CategoryDTO categoryDto) {
 		categoryService.createCategory(categoryDto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Category> updatecategory (@RequestBody CategoryDTO categoryDto, @PathVariable Long id) {
+	public ResponseEntity<Category> updateCategory (@RequestBody CategoryDTO categoryDto, @PathVariable Long id) {
 		categoryService.updateCategory(categoryDto, id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}

@@ -36,13 +36,13 @@ public class BorrowedController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Borrowed> createborrowed(@RequestBody BorrowedDTO borrowedDto) {
+	public ResponseEntity<Borrowed> createBorrowed(@RequestBody BorrowedDTO borrowedDto) {
 		borrowedService.createBorrowed(borrowedDto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Borrowed> updateborrowed (@RequestBody BorrowedDTO borrowedDto, @PathVariable Long id) {
+	public ResponseEntity<Borrowed> updateBorrowed (@RequestBody BorrowedDTO borrowedDto, @PathVariable Long id) {
 		borrowedService.updateBorrowed(borrowedDto, id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}

@@ -2,6 +2,7 @@ package com.buthdev.demo.services;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,7 @@ public class CategoryService {
 	
 	
 	private Category convertToCategory(CategoryDTO categoryDto, Category category) {
-		category.setName(categoryDto.name());
+		BeanUtils.copyProperties(categoryDto, category);
 		return category;
 	}
 }

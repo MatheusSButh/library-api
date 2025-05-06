@@ -2,6 +2,7 @@ package com.buthdev.demo.services;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,8 +45,7 @@ public class UserService {
 	
 	
 	private User convertToUser(UserDTO userDto, User user) {
-		user.setName(userDto.name());
-		user.setPhone(userDto.phone());
+		BeanUtils.copyProperties(userDto, user);
 		return user;
 	}
 }

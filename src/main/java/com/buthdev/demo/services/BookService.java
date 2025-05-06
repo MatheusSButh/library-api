@@ -3,6 +3,7 @@ package com.buthdev.demo.services;
 import java.util.HashSet;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +56,7 @@ public class BookService {
 	        throw new NotFoundException(bookDto.authorId());
 	    }
 		
-		book.setName(bookDto.name());
+		BeanUtils.copyProperties(bookDto, book);
 		book.setAuthor(authorService.findById(bookDto.authorId()));
 		book.setCategories(new HashSet<>(categoryService.findAllById(bookDto.categoryId())));
 		return book;

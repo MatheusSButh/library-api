@@ -31,13 +31,13 @@ public class AuthorController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Author> createauthor(@RequestBody AuthorDTO authorDto) {
+	public ResponseEntity<Author> createAuthor(@RequestBody AuthorDTO authorDto) {
 		authorService.createAuthor(authorDto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Author> updateauthor (@RequestBody AuthorDTO authorDto, @PathVariable Long id) {
+	public ResponseEntity<Author> updateAuthor (@RequestBody AuthorDTO authorDto, @PathVariable Long id) {
 		authorService.updateAuthor(authorDto, id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
