@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.buthdev.demo.dto.BorrowedDTO;
-import com.buthdev.demo.exceptions.UserNotFoundException;
+import com.buthdev.demo.exceptions.NotFoundException;
 import com.buthdev.demo.model.Borrowed;
 import com.buthdev.demo.model.enums.BorrowedStatus;
 import com.buthdev.demo.repositories.BorrowedRepository;
@@ -29,7 +29,7 @@ public class BorrowedService {
 	}
 	
 	public Borrowed findById(Long id) {
-		return borrowedRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
+		return borrowedRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
 	}
 	
 	public Borrowed createBorrowed(BorrowedDTO borrowedDto) {

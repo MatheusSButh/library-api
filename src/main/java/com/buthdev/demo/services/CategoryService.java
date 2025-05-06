@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.buthdev.demo.dto.CategoryDTO;
-import com.buthdev.demo.exceptions.UserNotFoundException;
+import com.buthdev.demo.exceptions.NotFoundException;
 import com.buthdev.demo.model.Category;
 import com.buthdev.demo.repositories.CategoryRepository;
 
@@ -21,7 +21,7 @@ public class CategoryService {
 	}
 	
 	public Category findById(Long id) {
-		return categoryRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
+		return categoryRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
 	}
 	
 	public Category createCategory(CategoryDTO categoryDto) {

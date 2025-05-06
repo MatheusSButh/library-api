@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalHandlerException {
 
-	@ExceptionHandler(UserNotFoundException.class)
-	public ResponseEntity<String> handleClienteNotFound(UserNotFoundException e) {
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<String> handleClienteNotFound(NotFoundException e) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 	}
 }

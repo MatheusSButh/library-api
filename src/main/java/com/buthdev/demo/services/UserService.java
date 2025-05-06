@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.buthdev.demo.dto.UserDTO;
-import com.buthdev.demo.exceptions.UserNotFoundException;
+import com.buthdev.demo.exceptions.NotFoundException;
 import com.buthdev.demo.model.User;
 import com.buthdev.demo.repositories.UserRepository;
 
@@ -21,7 +21,7 @@ public class UserService {
 	}
 	
 	public User findById(Long id) {
-		return userRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
+		return userRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
 	}
 	
 	public User createUser(UserDTO userDto) {

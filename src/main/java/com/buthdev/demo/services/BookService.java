@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.buthdev.demo.dto.BookDTO;
-import com.buthdev.demo.exceptions.UserNotFoundException;
+import com.buthdev.demo.exceptions.NotFoundException;
 import com.buthdev.demo.model.Book;
 import com.buthdev.demo.repositories.BookRepository;
 
@@ -28,7 +28,7 @@ public class BookService {
 	}
 	
 	public Book findById(Long id) {
-		return bookRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
+		return bookRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
 	}
 	
 	public Book createBook(BookDTO bookDto) {
@@ -52,7 +52,7 @@ public class BookService {
 	
 	private Book convertToBook(BookDTO bookDto, Book book) {
 		if (bookDto.authorId() == null) {
-	        throw new UserNotFoundException(bookDto.authorId());
+	        throw new NotFoundException(bookDto.authorId());
 	    }
 		
 		book.setName(bookDto.name());
