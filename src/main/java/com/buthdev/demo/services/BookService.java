@@ -51,13 +51,13 @@ public class BookService {
 	
 	
 	private Book convertToBook(BookDTO bookDto, Book book) {
-		if (bookDto.getAuthorId() == null) {
-	        throw new UserNotFoundException(bookDto.getAuthorId());
+		if (bookDto.authorId() == null) {
+	        throw new UserNotFoundException(bookDto.authorId());
 	    }
 		
-		book.setName(bookDto.getName());
-		book.setAuthor(authorService.findById(bookDto.getAuthorId()));
-		book.setCategories(new HashSet<>(categoryService.findAllById(bookDto.getCategoryId())));
+		book.setName(bookDto.name());
+		book.setAuthor(authorService.findById(bookDto.authorId()));
+		book.setCategories(new HashSet<>(categoryService.findAllById(bookDto.categoryId())));
 		return book;
 	}
 }

@@ -48,7 +48,7 @@ public class CategoryService {
 	
 	
 	private Category convertToCategory(CategoryDTO categoryDto, Category category) {
-		category.setName(categoryDto.getName());
+		category.setName(categoryDto.name());
 		return category;
 	}
 }

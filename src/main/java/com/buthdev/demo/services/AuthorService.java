@@ -44,7 +44,7 @@ public class AuthorService {
 	
 	
 	private Author convertToAuthor(AuthorDTO authorDto, Author author) {
-		author.setName(authorDto.getName());
+		author.setName(authorDto.name());
 		return author;
 	}
 }

@@ -44,8 +44,8 @@ public class UserService {
 	
 	
 	private User convertToUser(UserDTO userDto, User user) {
-		user.setName(userDto.getName());
-		user.setPhone(userDto.getPhone());
+		user.setName(userDto.name());
+		user.setPhone(userDto.phone());
 		return user;
 	}
 }

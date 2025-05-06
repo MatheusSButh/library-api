@@ -67,8 +67,8 @@ public class BorrowedService {
 		}
 	
 	private Borrowed convertToBorrowed(BorrowedDTO borrowedDto, Borrowed borrowed) {
-		borrowed.setUser(userService.findById(borrowedDto.getUserId()));
-		borrowed.setBook(bookService.findById(borrowedDto.getBookId()));
+		borrowed.setUser(userService.findById(borrowedDto.userId()));
+		borrowed.setBook(bookService.findById(borrowedDto.bookId()));
 		return borrowed;
 	}
 }
