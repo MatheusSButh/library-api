@@ -1,56 +1,63 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <h1>📚 API REST backend para empréstimo e gerenciamento de livros com Spring Boot e banco de dados relacional</h1>
-    <p>Este repositório contém o projeto de um sistema de gerenciamento de livros e empréstimos, utilizando <strong>Spring Boot</strong> para a construção do backend, com um banco de dados relacional (<strong>PostgreSQL</strong>) para armazenar os dados dos usuários, livros, autores e empréstimos. O sistema oferece operações CRUD para gerenciar livros, autores, usuários e empréstimos, além de verificar automaticamente o status dos empréstimos com base na data de devolução.</p>
-    <h2>🚀 Tecnologias Utilizadas</h2>
-    <ul>
-        <li><strong>Java 21</strong></li>
-        <li><strong>Spring Boot 3.4.4</strong></li>
-        <li><strong>Spring Data JPA</strong></li>
-        <li><strong>Banco de Dados Relacional</strong> (PostgreSQL)</li>
-        <li><strong>Maven</strong></li>
-        <li><strong>Lombok</strong></li>
-        <li><strong>Git para versionamento</strong></li>
-        <li><strong>Spring Scheduler</strong> (para tarefas agendadas, como verificar empréstimos expirados)</li>
-    </ul>
-    <h2>📌 Funcionalidades</h2>
-    <ul>
-        <li><strong>CRUD completo</strong> para livros, autores, usuários e empréstimos.</li>
-        <li><strong>Relacionamentos entre entidades.</strong></li>
-        <li><strong>Lógica de negócios</strong> para calcular a data de devolução e alterar o status do empréstimo automaticamente quando expirar.</li>
-        <li><strong>Controle de exceções</strong> personalizadas para erros de dados.</li>
-        <li><strong>DTOs</strong> para controle e validação de dados de entrada.</li>
-        <li><strong>Status de Empréstimo</strong> (Válido, Expirado, Inválido).</li>
-    </ul>
-    <h2>🛠 Como Executar o Projeto</h2>
-    <ol>
-        <li><strong>Clone o repositório</strong><br>
-            Clone o repositório para sua máquina local:
-            <pre><code>git clone https://github.com/MatheusSButh/library-api.git</code></pre>
-        </li>
-        <li><strong>Configure o banco de dados</strong><br>
-            Certifique-se de que o banco de dados relacional (MySQL ou PostgreSQL) está em execução localmente ou em um servidor. Crie o banco de dados conforme necessário. No arquivo <code>application.properties</code>, configure as credenciais do banco de dados:
-            <pre><code>spring.datasource.url=jdbc:postgresql://localhost:5432/nomedobanco
-            
-spring.datasource.username=usuario
-spring.datasource.password=senha
-spring.jpa.hibernate.ddl-auto=update</code></pre>
-        </li>
-        <li><strong>Execute o projeto</strong><br>
-            Você pode executar o projeto utilizando o Maven. Na raiz do projeto, execute o comando:
-            <pre><code>mvn spring-boot:run</code></pre>
-        </li>
-        <li><strong>Teste a API</strong><br>
-            Com o projeto em execução, você pode testar as operações CRUD utilizando ferramentas como <strong>Postman</strong> ou <strong>Insomnia</strong>.</li>
-    </ol>
-    <h2>📝 Autor</h2>
-    <p><strong>Matheus de Souza Buth</strong><br>
-    <a href="https://www.linkedin.com/in/matheusbuth/">LinkedIn</a></p>
+# ⚡ EcoVolt - Calculadora de Eficiência Energética (ODS 7)
 
-</body>
-</html>
+**Disciplina:** Programação para Dispositivos Móveis
+**Professor:** Prof. Dr. Romes Heriberto  
+**Integrantes:**
+* Matheus de Souza Buth
+* Dian Eike Monteiro de Andrade
+* Matues Lima Baldomir
+
+---
+
+### 1- Descrição do Problema
+Muitos cidadãos não têm consciência do quanto cada aparelho doméstico impacta sua conta de energia no final do mês. Essa falta de visibilidade dificulta a tomada de decisão para economizar energia, levando a gastos desnecessários e a um consumo energético maior do que o necessário, indo contra os princípios de sustentabilidade.
+
+### 2- Justificativa
+Este projeto está diretamente alinhado ao **ODS 7 (Energia acessível e limpa)** da ONU.
+
+* **ODS 7 - Meta 7.3:** "Até 2030, dobrar a taxa global de melhoria da eficiência energética."
+
+A justificativa do **EcoVolt** é fornecer uma ferramenta acessível para que qualquer pessoa possa auditar seu próprio consumo. Ao "traduzir" a potência (Watts) de um aparelho em Reais (R$), o aplicativo capacita o usuário a identificar os objetos que mais gastam de sua casa, incentiva o uso consciente e demonstra o potencial de energias limpas, contribuindo diretamente para a meta 7.3.
+
+### 3- Público-Alvo
+* **Chefes de família** e donos de casa que desejam reduzir a conta de luz.
+* **Pequenos comerciantes** que buscam otimizar os custos operacionais.
+* **Estudantes e entusiastas** de sustentabilidade que querem monitorar seu impacto.
+
+### 4- Objetivos do app
+* **Geral:** Desenvolver um aplicativo móvel (MVP) que conscientize os usuários sobre seu consumo de energia elétrica, alinhado ao ODS 7.
+* **Específicos:**
+    * Implementar uma **calculadora de consumo** para estimar o gasto (kWh e R$) de aparelhos.
+    * Fornecer uma tela com **dicas de eficiência** para reduzir o consumo.
+    * Incluir uma **simulação de economia** com painéis solares (MVP).
+    * Garantir uma interface simples, acessível e funcional.
+
+### 5- Tipo de aplicação
+* **Aplicativo nativo android**, desenvolvido utilizando **Java** para a lógica de programação e **XML** para a construção das interfaces (UI).
+
+### 6- Instruções de Instalação e Uso
+
+#### Opção 1: Instalando o APK (Recomendado)
+1.  Baixe o arquivo `EcoVolt-v1.0.apk` na pasta `/apk` deste repositório (após você gerá-lo).
+2.  Permita a instalação de "fontes desconhecidas" nas configurações do seu Android.
+3.  Instale o arquivo APK.
+
+#### Opção 2: Compilando o Código (Desenvolvedor)
+1.  Clone este repositório: `git clone https://github.com/MatheusSButh/EcoVolt`
+2.  Abra o projeto no **Android Studio**.
+3.  Aguarde o Gradle sincronizar as dependências.
+4.  Conecte um dispositivo android ou inicie um emulador.
+5.  Clique em "Run" (Shift + F10).
+
+### 7- Requisitos do sistema
+* **Sistema Operacional:** Android 8.0 (Oreo) - API Nível 26 ou superior.
+
+---
+
+### Evidências Visuais (Screenshots)
+
+**Atenção:** Você precisa tirar estes prints e colocá-los na pasta `/screenshots`.
+
+| Tela Principal (Calculadora) | Tela de dicas de eficiência | Tela de simulação solar |
+| :---: | :---: | :---: |
+| ![Tela Principal]() | ![Tela de Dicas]() | ![Tela de Simulação]() |
